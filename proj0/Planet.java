@@ -54,7 +54,7 @@ public class Planet {
             if(p.equals(this)){
                 continue;
             } else {
-                xf_sum += (-1) * calcForceExertedByX(p);
+                xf_sum += calcForceExertedByX(p);
             }
         }
         return xf_sum;
@@ -66,7 +66,7 @@ public class Planet {
             if(p.equals(this)){
                 continue;
             } else {
-                yf_sum += (-1) * calcForceExertedByY(p);
+                yf_sum +=  calcForceExertedByY(p);
             }
         }
         return yf_sum;
