@@ -40,23 +40,21 @@ public class Planet {
 
     public double calcForceExertedByX(Planet p) {
         double x_dis = this.xxPos > p.xxPos ? p.xxPos - this.xxPos : this.xxPos - p.xxPos;
-        return x_dis * calcForceExertedBy(p) / calcDistance(p);
+        return  x_dis * calcForceExertedBy(p) / calcDistance(p);
     }
 
     public double calcForceExertedByY(Planet p) {
-        double y_dis = this.yyPos > p.yyPos ? p.yyPos - this.yyPos : this.yyPos - p.yyPos;
+        double y_dis = this.yyPos > p.yyPos ? p.yyPos - this.yyPos : this.yyPos - p.yyPos ;
         return y_dis * calcForceExertedBy(p) / calcDistance(p);
     }
 
     public double calcNetForceExertedByX(Planet[] planets) {
         double xf_sum = 0;
         for (Planet p : planets) {
-            if (p.equals(this)) {
+            if(p.equals(this)){
                 continue;
-            } else if (p.xxPos < this.xxPos) {
-                xf_sum += (-1) * calcForceExertedByX(p);
-            } else {
-                xf_sum += calcForceExertedByX(p);
+            } else{
+              xf_sum += calcForceExertedByX(p);
             }
         }
         return xf_sum;
@@ -65,26 +63,22 @@ public class Planet {
     public double calcNetForceExertedByY(Planet[] planets) {
         double yf_sum = 0;
         for (Planet p : planets) {
-            if (p.equals(this)) {
+            if(p.equals(this)){
                 continue;
-            } else if (p.yyPos < this.yyPos) {
-                yf_sum += (-1) * calcForceExertedByY(p);
-            } else {
-                yf_sum += calcForceExertedByY(p);
+            }else{
+                yf_sum+= calcForceExertedByY(p);
             }
         }
         return yf_sum;
     }
-
-    public void update(double time, double Fx, double Fy) {
+    public void update(double time, double Fx, double Fy){
         this.xxVel = this.xxVel + time * Fx / this.mass;
         this.yyVel = this.yyVel + time * Fy / this.mass;
         this.xxPos = this.xxPos + this.xxVel * time;
         this.yyPos = this.yyPos + this.yyVel * time;
     }
-
-    public void draw() {
-        StdDraw.picture(this.xxPos, this.yyPos, "images/" + imgFileName);
+    public void draw(){
+        StdDraw.picture(this.xxPos,this.yyPos, "images/" + imgFileName);
     }
 
 
