@@ -39,12 +39,12 @@ public class Planet {
     }
 
     public double calcForceExertedByX(Planet p) {
-        double x_dis = this.xxPos > p.xxPos ? this.xxPos - p.xxPos : p.xxPos - this.xxPos;
+        double x_dis = p.xxPos - this.xxPos;
         return x_dis * calcForceExertedBy(p) / calcDistance(p);
     }
 
     public double calcForceExertedByY(Planet p) {
-        double y_dis = this.yyPos > p.yyPos ? this.yyPos - p.yyPos : p.yyPos - this.yyPos;
+        double y_dis = p.yyPos - this.yyPos;
         return y_dis * calcForceExertedBy(p) / calcDistance(p);
     }
 
@@ -53,11 +53,8 @@ public class Planet {
         for (Planet p : planets) {
             if(p.equals(this)){
                 continue;
-            }
-            else if (p.xxPos < this.xxPos) {
+            } else {
                 xf_sum += (-1) * calcForceExertedByX(p);
-            }else{
-                xf_sum += calcForceExertedByX(p);
             }
         }
         return xf_sum;
@@ -68,11 +65,8 @@ public class Planet {
         for (Planet p : planets) {
             if(p.equals(this)){
                 continue;
-            }
-            else if (p.yyPos < this.yyPos) {
+            } else {
                 yf_sum += (-1) * calcForceExertedByY(p);
-            }else{
-                yf_sum += calcForceExertedByY(p);
             }
         }
         return yf_sum;
